@@ -4,7 +4,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import Header from "../components/Header";
 
-import appCss from "../styles.css?url";
+import appCss from "@alsos/ui/globals.css?url";
 
 export const Route = createRootRoute({
   head: () => ({
