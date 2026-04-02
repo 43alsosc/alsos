@@ -19,7 +19,7 @@ Eller fra denne mappen:
 bun run dev
 ```
 
-Standard dev-port er **3000**.
+Standard dev-port er **41505** (se `dev`-script i `package.json`).
 
 ## Bygg og forhåndsvisning
 
