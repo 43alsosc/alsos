@@ -1,10 +1,7 @@
 {
-  "name": "marketing",
+  "name": "@alsos/marketing",
   "private": true,
   "type": "module",
-  "imports": {
-    "#/*": "./src/*"
-  },
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
@@ -13,6 +10,7 @@
     "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
+    "@alsos/env": "workspace:*",
     "@alsos/ui": "workspace:*",
     "@cloudflare/vite-plugin": "1.31.0",
     "@tailwindcss/vite": "4.2.2",
@@ -22,10 +20,12 @@
     "@tanstack/react-router-ssr-query": "1.166.10",
     "@tanstack/react-start": "1.167.16",
     "@tanstack/router-plugin": "1.167.12",
+    "@t3-oss/env-core": "0.13.11",
     "lucide-react": "1.7.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "tailwindcss": "4.2.2"
+    "tailwindcss": "4.2.2",
+    "zod": "4.3.6"
   },
   "devDependencies": {
     "@alsos/eslint-config": "workspace:*",

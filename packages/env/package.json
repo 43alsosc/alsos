@@ -1,0 +1,42 @@
+{
+  "name": "@alsos/env",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    "./shared": {
+      "types": "./dist/shared/index.d.ts",
+      "import": "./dist/shared/index.js",
+      "default": "./dist/shared/index.js"
+    },
+    "./vite": {
+      "types": "./dist/vite/index.d.ts",
+      "import": "./dist/vite/index.js",
+      "default": "./dist/vite/index.js"
+    },
+    "./next": {
+      "types": "./dist/next/index.d.ts",
+      "import": "./dist/next/index.js",
+      "default": "./dist/next/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint",
+    "check-types": "tsc --noEmit",
+    "prepare": "bun run build"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "0.13.11",
+    "@t3-oss/env-nextjs": "0.13.11",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@alsos/eslint-config": "workspace:*",
+    "@alsos/typescript-config": "workspace:*",
+    "@types/node": "25.5.0",
+    "eslint": "10.1.0",
+    "typescript": "6.0.2"
+  }
+}

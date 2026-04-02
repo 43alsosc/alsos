@@ -1,0 +1,5 @@
+type(scope[,scope2,scope3]): short description in imperative form  
+
+[optional longer description]
+
+[optional footer: BREAKING CHANGE:, Closes #123, Refs #456, Co-authored-by: ...]
