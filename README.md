@@ -2,6 +2,8 @@
 
 Monorepo for Alsos, bygget med [Turborepo](https://turborepo.dev) og [Bun](https://bun.sh) som pakkebehandler.
 
+Dette prosjektet er laget for å holde styr på alle prosjektene jeg har jobbet med.
+
 ## Apper
 
 | App | Beskrivelse |
