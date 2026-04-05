@@ -1,24 +1,34 @@
-import { defineConfig } from 'vite'
-import { devtools } from '@tanstack/devtools-vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { devtools } from "@tanstack/devtools-vite";
+import { defineConfig, loadEnv } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-import viteReact from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import { cloudflare } from '@cloudflare/vite-plugin'
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
-import './src/env.ts'
+import { cloudflare } from "@cloudflare/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
+import viteReact from "@vitejs/plugin-react";
 
-const config = defineConfig({
-  plugins: [
-    devtools(),
-    cloudflare({ viteEnvironment: { name: 'ssr' } }),
-    tsconfigPaths({ projects: ['./tsconfig.json'] }),
-    tailwindcss(),
-    tanstackStart(),
-    viteReact(),
-  ],
-})
+const envDir = dirname(fileURLToPath(import.meta.url));
 
-export default config
+export default defineConfig(async ({ mode }) => {
+  Object.assign(process.env, loadEnv(mode, envDir, ""));
+
+  await import("./src/env.ts");
+
+  return {
+    resolve: {
+      dedupe: ["react", "react-dom"],
+    },
+    plugins: [
+      devtools(),
+      cloudflare({ viteEnvironment: { name: "ssr" } }),
+      tsconfigPaths({ projects: ["./tsconfig.json"] }),
+      tailwindcss(),
+      tanstackStart(),
+      viteReact(),
+    ],
+  };
+});

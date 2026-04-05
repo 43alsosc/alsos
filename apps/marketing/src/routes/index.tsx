@@ -5,7 +5,7 @@ export const Route = createFileRoute("/")({ component: App });
 
 function App() {
   return (
-    <main className="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center gap-6 px-6 py-16 text-center">
+    <div className="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center gap-6 px-6 py-16 text-center">
       <p className="text-sm font-medium text-neutral-500">Marketing</p>
       <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
         Under utvikling
@@ -16,6 +16,6 @@ function App() {
       <Button variant="default" size="lg" disabled>
         Kommer snart
       </Button>
-    </main>
+    </div>
   );
 }

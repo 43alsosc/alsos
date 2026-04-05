@@ -1,10 +1,13 @@
+import { SidebarInset, SidebarProvider } from "@alsos/ui/components/sidebar";
+import { TooltipProvider } from "@alsos/ui/components/tooltip";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-import Header from "../components/Header";
+import Header from "../components/navigation/Header";
 
 import appCss from "@alsos/ui/globals.css?url";
+import { AppSidebar } from "../components/navigation/app-sidebar";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -37,20 +40,27 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
-        {children}
-        <TanStackDevtools
-          config={{
-            position: "bottom-right",
-          }}
-          plugins={[
-            {
-              name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
-        <Scripts />
+        <TooltipProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <Header />
+              {children}
+            </SidebarInset>
+            <TanStackDevtools
+              config={{
+                position: "bottom-right",
+              }}
+              plugins={[
+                {
+                  name: "Tanstack Router",
+                  render: <TanStackRouterDevtoolsPanel />,
+                },
+              ]}
+            />
+            <Scripts />
+          </SidebarProvider>
+        </TooltipProvider>
       </body>
     </html>
   );
